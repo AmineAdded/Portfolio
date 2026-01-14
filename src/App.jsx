@@ -19,6 +19,7 @@ import {
   ArrowRight,
   Download,
   Star,
+  Globe,
 } from "lucide-react";
 
 export default function Portfolio() {
@@ -26,6 +27,7 @@ export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [language, setLanguage] = useState("fr");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -70,96 +72,305 @@ export default function Portfolio() {
     }
   };
 
-  const projects = [
-    {
-      title: "HealthyfiTN",
-      period: "Oct. 2025 - Déc. 2025",
-      description:
-        "Solution complète de santé numérique avec application mobile (Kotlin) et plateforme web (Angular), alimentée par un backend Spring Boot avec microservices. Intègre l'IA pour l'analyse de santé, suivi biométrique en temps réel avec avatar 3D, et chatbot intelligent Gemini.",
-      tech: ["Angular", "Spring Boot", "Kotlin", "Keycloak", "AI", "Python"],
-      gradient: "from-emerald-500 via-teal-500 to-cyan-500",
-      icon: "🏥",
+  const content = {
+    fr: {
+      nav: ["Accueil", "À propos", "Expérience", "Projets", "Certifications", "Contact"],
+      hero: {
+        badge: "Étudiant en Informatique",
+        name: "Amine Added",
+        title: "Développeur Full Stack",
+        description: "Passionné par la création d'expériences numériques exceptionnelles",
+        education: "ISET Bizerte",
+        role: "Membre",
+        cta1: "Voir mes projets",
+        cta2: "Me contacter",
+        downloadCV: "Télécharger CV"
+      },
+      stats: [
+        { label: "Projets Réalisés", value: "15+" },
+        { label: "Technologies", value: "14+" },
+        { label: "Certifications", value: "4" },
+        { label: "Années d'Expérience", value: "2+" }
+      ],
+      about: {
+        title: "À propos",
+        intro: "Étudiant passionné en informatique à ISET Bizerte, je me spécialise dans le développement full stack avec une expertise particulière en résolution de problèmes complexes.",
+        experience: "Mon expérience chez OneTech Group m'a permis de développer des solutions web modernes en utilisant Vue.js et Laravel pour optimiser la gestion d'entreprise.",
+        role: "En tant que Membre IEEE de l'IEEE ISET Bizerte Student Branch, je suis déterminé à poursuivre mes études d'ingénieur avec une spécialisation en Intelligence Artificielle.",
+        skillsTitle: "Compétences Techniques"
+      },
+      experience: {
+        title: "Expérience",
+        job1: {
+          date: "Janvier 2025",
+          title: "Stagiaire Développeur",
+          company: "OneTech Group",
+          description: "Développement d'une application web complète pour la gestion des salariés, tâches, évaluations et formateurs utilisant Vue.js 3 et Laravel 9."
+        },
+        job2: {
+          date: "Janvier 2024",
+          title: "Stagiaire d'Observation",
+          company: "OneTech Group",
+          description: "Découverte du monde professionnel et apprentissage de la fabrication des composants électroniques."
+        },
+        timeline: "Début du parcours"
+      },
+      projects: {
+        title: "Projets"
+      },
+      certifications: {
+        title: "Certifications"
+      },
+      contact: {
+        title: "Travaillons Ensemble",
+        subtitle: "Je suis toujours ouvert aux opportunités de collaboration et aux projets innovants. N'hésitez pas à me contacter !",
+        formation: "Formation",
+        status: "Statut",
+        statusText: "Ouvert aux opportunités",
+        statusDesc: "Stage • Projet • Freelance"
+      },
+      footer: {
+        designed: "Conçu avec ❤️ • React + Tailwind"
+      }
     },
-    {
-      title: "Smart-Learn",
-      period: "Nov. 2025 - Déc. 2025",
-      description:
-        "Plateforme éducative révolutionnaire combinant quiz interactifs, contenu vidéo YouTube et personnalisation IA. Propose des évaluations intelligentes, parcours d'apprentissage adaptatifs et gamification de la progression.",
-      tech: ["Flutter", "Spring Boot", "MySQL", "Gemini API"],
-      gradient: "from-blue-500 via-indigo-500 to-purple-500",
-      icon: "🎓",
-    },
-    {
-      title: "SITE Conference",
-      period: "Juin 2025",
-      description:
-        "Plateforme web pour l'événement SITE avec aperçu des éditions précédentes, inscription en ligne, système de paiement, badges numériques et génération automatique de certificats.",
-      tech: ["TypeScript", "Laravel", "MySQL"],
-      gradient: "from-purple-500 via-pink-500 to-rose-500",
-      icon: "🎪",
-    },
-    {
-      title: "ChbebiWin",
-      period: "Fév. 2025 - Mai 2025",
-      description:
-        "Application dédiée aux jeunes Tunisiens offrant des tests de personnalité et exploration de la culture, traditions et religion tunisiennes pour promouvoir l'identité nationale.",
-      tech: ["Laravel", "Vue.js", "MySQL"],
-      gradient: "from-red-500 via-orange-500 to-amber-500",
-      icon: "🇹🇳",
-    },
-    {
-      title: "LawReserve",
-      period: "Nov. 2024",
-      description:
-        "Plateforme connectant clients et avocats avec navigation des services juridiques, prise de rendez-vous et gestion des consultations.",
-      tech: ["Vue.js", "PHP", "Firebase", "MySQL"],
-      gradient: "from-amber-500 via-yellow-500 to-lime-500",
-      icon: "⚖️",
-    },
-    {
-      title: "BusGameSimulator",
-      period: "Fév. 2024 - Avr. 2025",
-      description:
-        "Système de simulation en C modélisant le transport public urbain en mode graphique avec SDL1.2, permettant l'évaluation de l'efficacité des activités de transport.",
-      tech: ["C", "SDL 1.2"],
-      gradient: "from-cyan-500 via-blue-500 to-indigo-500",
-      icon: "🚌",
-    },
-  ];
+    en: {
+      nav: ["Home", "About", "Experience", "Projects", "Certifications", "Contact"],
+      hero: {
+        badge: "Computer Science Student",
+        name: "Amine Added",
+        title: "Full Stack Developer",
+        description: "Passionate about creating exceptional digital experiences",
+        education: "ISET Bizerte",
+        role: "Member",
+        cta1: "View my projects",
+        cta2: "Contact me",
+        downloadCV: "Download CV"
+      },
+      stats: [
+        { label: "Completed Projects", value: "15+" },
+        { label: "Technologies", value: "14+" },
+        { label: "Certifications", value: "4" },
+        { label: "Years of Experience", value: "2+" }
+      ],
+      about: {
+        title: "About Me",
+        intro: "Passionate computer science student at ISET Bizerte, I specialize in full stack development with particular expertise in solving complex problems.",
+        experience: "My experience at OneTech Group allowed me to develop modern web solutions using Vue.js and Laravel to optimize business management.",
+        role: "As IEEE member of the IEEE ISET Bizerte Student Branch, I am determined to pursue engineering studies with a specialization in Artificial Intelligence.",
+        skillsTitle: "Technical Skills"
+      },
+      experience: {
+        title: "Experience",
+        job1: {
+          date: "January 2025",
+          title: "Developer Intern",
+          company: "OneTech Group",
+          description: "Development of a complete web application for managing employees, tasks, evaluations and trainers using Vue.js 3 and Laravel 9."
+        },
+        job2: {
+          date: "January 2024",
+          title: "Observation Intern",
+          company: "OneTech Group",
+          description: "Discovery of the professional world and learning about electronic component manufacturing."
+        },
+        timeline: "Journey begins"
+      },
+      projects: {
+        title: "Projects"
+      },
+      certifications: {
+        title: "Certifications"
+      },
+      contact: {
+        title: "Let's Work Together",
+        subtitle: "I'm always open to collaboration opportunities and innovative projects. Feel free to contact me!",
+        formation: "Education",
+        status: "Status",
+        statusText: "Open to opportunities",
+        statusDesc: "Internship • Project • Freelance"
+      },
+      footer: {
+        designed: "Designed with ❤️ • React + Tailwind"
+      }
+    }
+  };
 
-  const certifications = [
-    {
-      title: "Attestation d'Excellence",
-      issuer: "PeP - Pédagogie et Technologies",
-      date: "Juillet 2025",
-      icon: "🏆",
-      color: "from-yellow-400 to-orange-500",
-    },
-    {
-      title: "IEEEXtreme 18.0 Programming Competition",
-      issuer: "IEEE",
-      date: "Octobre 2024",
-      skill: "19,000 participants",
-      icon: "⚡",
-      color: "from-blue-400 to-indigo-500",
-    },
-    {
-      title: "Microsoft Certified: Azure AI Fundamentals",
-      issuer: "Microsoft",
-      date: "Octobre 2024",
-      skill: "NLP, Computer Vision, Azure AI",
-      icon: "☁️",
-      color: "from-cyan-400 to-blue-500",
-    },
-    {
-      title: "Bizerte Tcodi 2.0",
-      issuer: "IEEE ISET Bizerte",
-      date: "Sept. 2025",
-      skill: "Résolution de problèmes",
-      icon: "🎯",
-      color: "from-purple-400 to-pink-500",
-    },
-  ];
+  const t = content[language];
+
+  const projectsData = {
+    fr: [
+      {
+        title: "HealthyfiTN",
+        period: "Oct. 2025 - Déc. 2025",
+        description: "Solution complète de santé numérique avec application mobile (Kotlin) et plateforme web (Angular), alimentée par un backend Spring Boot avec microservices. Intègre l'IA pour l'analyse de santé, suivi biométrique en temps réel avec avatar 3D, et chatbot intelligent Gemini.",
+        tech: ["Angular", "Spring Boot", "Kotlin", "Keycloak", "AI", "Python"],
+        gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+        icon: "🏥",
+      },
+      {
+        title: "Smart-Learn",
+        period: "Nov. 2025 - Déc. 2025",
+        description: "Plateforme éducative révolutionnaire combinant quiz interactifs, contenu vidéo YouTube et personnalisation IA. Propose des évaluations intelligentes, parcours d'apprentissage adaptatifs et gamification de la progression.",
+        tech: ["Flutter", "Spring Boot", "MySQL", "Gemini API"],
+        gradient: "from-blue-500 via-indigo-500 to-purple-500",
+        icon: "🎓",
+      },
+      {
+        title: "SITE Conference",
+        period: "Juin 2025",
+        description: "Plateforme web pour l'événement SITE avec aperçu des éditions précédentes, inscription en ligne, système de paiement, badges numériques et génération automatique de certificats.",
+        tech: ["TypeScript", "Laravel", "MySQL"],
+        gradient: "from-purple-500 via-pink-500 to-rose-500",
+        icon: "🎪",
+      },
+      {
+        title: "ChbebiWin",
+        period: "Fév. 2025 - Mai 2025",
+        description: "Application dédiée aux jeunes Tunisiens offrant des tests de personnalité et exploration de la culture, traditions et religion tunisiennes pour promouvoir l'identité nationale.",
+        tech: ["Laravel", "Vue.js", "MySQL"],
+        gradient: "from-red-500 via-orange-500 to-amber-500",
+        icon: "🇹🇳",
+      },
+      {
+        title: "LawReserve",
+        period: "Nov. 2024",
+        description: "Plateforme connectant clients et avocats avec navigation des services juridiques, prise de rendez-vous et gestion des consultations.",
+        tech: ["Vue.js", "PHP", "Firebase", "MySQL"],
+        gradient: "from-amber-500 via-yellow-500 to-lime-500",
+        icon: "⚖️",
+      },
+      {
+        title: "BusGameSimulator",
+        period: "Fév. 2024 - Avr. 2025",
+        description: "Système de simulation en C modélisant le transport public urbain en mode graphique avec SDL1.2, permettant l'évaluation de l'efficacité des activités de transport.",
+        tech: ["C", "SDL 1.2"],
+        gradient: "from-cyan-500 via-blue-500 to-indigo-500",
+        icon: "🚌",
+      },
+    ],
+    en: [
+      {
+        title: "HealthyfiTN",
+        period: "Oct. 2025 - Dec. 2025",
+        description: "Complete digital health solution with mobile app (Kotlin) and web platform (Angular), powered by Spring Boot backend with microservices. Integrates AI for health analysis, real-time biometric tracking with 3D avatar, and Gemini intelligent chatbot.",
+        tech: ["Angular", "Spring Boot", "Kotlin", "Keycloak", "AI", "Python"],
+        gradient: "from-emerald-500 via-teal-500 to-cyan-500",
+        icon: "🏥",
+      },
+      {
+        title: "Smart-Learn",
+        period: "Nov. 2025 - Dec. 2025",
+        description: "Revolutionary educational platform combining interactive quizzes, YouTube video content and AI personalization. Offers intelligent assessments, adaptive learning paths and gamified progress.",
+        tech: ["Flutter", "Spring Boot", "MySQL", "Gemini API"],
+        gradient: "from-blue-500 via-indigo-500 to-purple-500",
+        icon: "🎓",
+      },
+      {
+        title: "SITE Conference",
+        period: "June 2025",
+        description: "Web platform for SITE event with overview of previous editions, online registration, payment system, digital badges and automatic certificate generation.",
+        tech: ["TypeScript", "Laravel", "MySQL"],
+        gradient: "from-purple-500 via-pink-500 to-rose-500",
+        icon: "🎪",
+      },
+      {
+        title: "ChbebiWin",
+        period: "Feb. 2025 - May 2025",
+        description: "Application dedicated to young Tunisians offering personality tests and exploration of Tunisian culture, traditions and religion to promote national identity.",
+        tech: ["Laravel", "Vue.js", "MySQL"],
+        gradient: "from-red-500 via-orange-500 to-amber-500",
+        icon: "🇹🇳",
+      },
+      {
+        title: "LawReserve",
+        period: "Nov. 2024",
+        description: "Platform connecting clients and lawyers with legal services navigation, appointment booking and consultation management.",
+        tech: ["Vue.js", "PHP", "Firebase", "MySQL"],
+        gradient: "from-amber-500 via-yellow-500 to-lime-500",
+        icon: "⚖️",
+      },
+      {
+        title: "BusGameSimulator",
+        period: "Feb. 2024 - Apr. 2025",
+        description: "C-based simulation system modeling urban public transportation in graphics mode with SDL1.2, enabling evaluation of transport activity efficiency.",
+        tech: ["C", "SDL 1.2"],
+        gradient: "from-cyan-500 via-blue-500 to-indigo-500",
+        icon: "🚌",
+      },
+    ]
+  };
+
+  const certificationsData = {
+    fr: [
+      {
+        title: "Attestation d'Excellence",
+        issuer: "PeP - Pédagogie et Technologies",
+        date: "Juillet 2025",
+        icon: "🏆",
+        color: "from-yellow-400 to-orange-500",
+      },
+      {
+        title: "IEEEXtreme 18.0 Programming Competition",
+        issuer: "IEEE",
+        date: "Octobre 2024",
+        skill: "19,000 participants",
+        icon: "⚡",
+        color: "from-blue-400 to-indigo-500",
+      },
+      {
+        title: "Microsoft Certified: Azure AI Fundamentals",
+        issuer: "Microsoft",
+        date: "Octobre 2024",
+        skill: "NLP, Computer Vision, Azure AI",
+        icon: "☁️",
+        color: "from-cyan-400 to-blue-500",
+      },
+      {
+        title: "Bizerte Tcodi 2.0",
+        issuer: "IEEE ISET Bizerte",
+        date: "Sept. 2025",
+        skill: "Résolution de problèmes",
+        icon: "🎯",
+        color: "from-purple-400 to-pink-500",
+      },
+    ],
+    en: [
+      {
+        title: "Certificate of Excellence",
+        issuer: "PeP - Pedagogy and Technologies",
+        date: "July 2025",
+        icon: "🏆",
+        color: "from-yellow-400 to-orange-500",
+      },
+      {
+        title: "IEEEXtreme 18.0 Programming Competition",
+        issuer: "IEEE",
+        date: "October 2024",
+        skill: "19,000 participants",
+        icon: "⚡",
+        color: "from-blue-400 to-indigo-500",
+      },
+      {
+        title: "Microsoft Certified: Azure AI Fundamentals",
+        issuer: "Microsoft",
+        date: "October 2024",
+        skill: "NLP, Computer Vision, Azure AI",
+        icon: "☁️",
+        color: "from-cyan-400 to-blue-500",
+      },
+      {
+        title: "Bizerte Tcodi 2.0",
+        issuer: "IEEE ISET Bizerte",
+        date: "Sept. 2025",
+        skill: "Problem Solving",
+        icon: "🎯",
+        color: "from-purple-400 to-pink-500",
+      },
+    ]
+  };
+
+  const projects = projectsData[language];
+  const certifications = certificationsData[language];
 
   const skills = [
     { name: "Java", level: 90, color: "bg-red-500" },
@@ -172,13 +383,6 @@ export default function Portfolio() {
     { name: "MySQL", level: 85, color: "bg-blue-600" },
     { name: "Flutter", level: 82, color: "bg-cyan-500" },
     { name: "TypeScript", level: 83, color: "bg-blue-500" },
-  ];
-
-  const stats = [
-    { label: "Projets Réalisés", value: "15+", icon: Code },
-    { label: "Technologies", value: "14+", icon: Zap },
-    { label: "Certifications", value: "4", icon: Award },
-    { label: "Années d'Expérience", value: "2+", icon: Target },
   ];
 
   return (
@@ -219,26 +423,31 @@ export default function Portfolio() {
 
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-1">
-              {[
-                { id: "home", label: "Accueil" },
-                { id: "about", label: "À propos" },
-                { id: "experience", label: "Expérience" },
-                { id: "projects", label: "Projets" },
-                { id: "certifications", label: "Certifications" },
-                { id: "contact", label: "Contact" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
-                    activeSection === item.id
-                      ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50"
-                      : "text-slate-300 hover:text-white hover:bg-slate-800"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              ))}
+              {t.nav.map((label, idx) => {
+                const id = ["home", "about", "experience", "projects", "certifications", "contact"][idx];
+                return (
+                  <button
+                    key={id}
+                    onClick={() => scrollToSection(id)}
+                    className={`px-4 py-2 rounded-lg font-medium transition-all duration-300 ${
+                      activeSection === id
+                        ? "bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-lg shadow-cyan-500/50"
+                        : "text-slate-300 hover:text-white hover:bg-slate-800"
+                    }`}
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+             
+              {/* Language Switcher */}
+              <button
+                onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
+                className="ml-2 px-4 py-2 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg transition-colors border border-purple-500/30 flex items-center gap-2"
+              >
+                <Globe size={16} />
+                <span className="font-semibold">{language === "fr" ? "EN" : "FR"}</span>
+              </button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -255,22 +464,25 @@ export default function Portfolio() {
         {mobileMenuOpen && (
           <div className="md:hidden bg-slate-900/95 backdrop-blur-xl border-t border-slate-800">
             <div className="px-4 py-6 space-y-2">
-              {[
-                { id: "home", label: "Accueil" },
-                { id: "about", label: "À propos" },
-                { id: "experience", label: "Expérience" },
-                { id: "projects", label: "Projets" },
-                { id: "certifications", label: "Certifications" },
-                { id: "contact", label: "Contact" },
-              ].map((item) => (
-                <button
-                  key={item.id}
-                  onClick={() => scrollToSection(item.id)}
-                  className="block w-full text-left px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all"
-                >
-                  {item.label}
-                </button>
-              ))}
+              {t.nav.map((label, idx) => {
+                const id = ["home", "about", "experience", "projects", "certifications", "contact"][idx];
+                return (
+                  <button
+                    key={id}
+                    onClick={() => scrollToSection(id)}
+                    className="block w-full text-left px-4 py-3 rounded-lg text-slate-300 hover:bg-slate-800 hover:text-white transition-all"
+                  >
+                    {label}
+                  </button>
+                );
+              })}
+              <button
+                onClick={() => setLanguage(language === "fr" ? "en" : "fr")}
+                className="w-full px-4 py-3 bg-purple-500/20 hover:bg-purple-500/30 rounded-lg transition-colors border border-purple-500/30 flex items-center justify-center gap-2"
+              >
+                <Globe size={16} />
+                <span className="font-semibold">{language === "fr" ? "English" : "Français"}</span>
+              </button>
             </div>
           </div>
         )}
@@ -285,23 +497,23 @@ export default function Portfolio() {
           <div className="text-center space-y-8">
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-400 text-sm font-medium backdrop-blur-sm animate-fade-in">
               <Sparkles size={16} className="animate-pulse" />
-              Étudiant en Informatique
+              {t.hero.badge}
             </div>
 
             <h1 className="text-6xl md:text-8xl font-black mb-6 animate-fade-in">
               <span className="bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
-                Amine Added
+                {t.hero.name}
               </span>
             </h1>
 
             <div className="space-y-4 animate-fade-in delay-100">
               <p className="text-2xl md:text-4xl font-bold text-slate-200">
-                Développeur Full Stack
+                {t.hero.title}
               </p>
               <p className="text-lg md:text-xl text-slate-400 max-w-2xl mx-auto">
-                Passionné par la création d'expériences numériques exceptionnelles
+                {t.hero.description}
                 <br />
-                <span className="text-cyan-400">ISET Bizerte</span> • Vice Chairman{" "}
+                <span className="text-cyan-400">{t.hero.education}</span> • {t.hero.role}{" "}
                 <span className="text-blue-400">IEEE</span>
               </p>
             </div>
@@ -311,7 +523,7 @@ export default function Portfolio() {
                 onClick={() => scrollToSection("projects")}
                 className="group px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-full font-bold shadow-lg shadow-cyan-500/50 hover:shadow-xl hover:shadow-cyan-500/60 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
               >
-                Voir mes projets
+                {t.hero.cta1}
                 <ArrowRight
                   size={20}
                   className="group-hover:translate-x-1 transition-transform"
@@ -321,15 +533,18 @@ export default function Portfolio() {
                 onClick={() => scrollToSection("contact")}
                 className="px-8 py-4 bg-slate-800 border-2 border-cyan-500 rounded-full font-bold hover:bg-slate-700 transform hover:scale-105 transition-all duration-300"
               >
-                Me contacter
+                {t.hero.cta2}
               </button>
-              <button
+              <a
+                href={language === "fr" ? "/cv-amine-fr.pdf" : "/cv-amine-en.pdf"}
+                download={language === "fr" ? "CV_Amine_Added_FR.pdf" : "CV_Amine_Added_EN.pdf"}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group px-8 py-4 bg-slate-800 border-2 border-purple-500 rounded-full font-bold hover:bg-slate-700 transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-                onClick={() => alert("Téléchargement du CV...")}
               >
                 <Download size={20} />
-                Télécharger CV
-              </button>
+                {t.hero.downloadCV}
+              </a>
             </div>
 
             <div className="flex justify-center gap-4 pt-8 animate-fade-in delay-300">
@@ -360,18 +575,22 @@ export default function Portfolio() {
       <section className="py-20 relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="text-center p-6 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-cyan-500 transition-all duration-300 hover:transform hover:scale-105"
-              >
-                <stat.icon className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
-                <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                  {stat.value}
+            {t.stats.map((stat, idx) => {
+              const icons = [Code, Zap, Award, Target];
+              const Icon = icons[idx];
+              return (
+                <div
+                  key={idx}
+                  className="text-center p-6 bg-slate-800/50 backdrop-blur-sm rounded-2xl border border-slate-700 hover:border-cyan-500 transition-all duration-300 hover:transform hover:scale-105"
+                >
+                  <Icon className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
+                  <div className="text-4xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-slate-400 text-sm">{stat.label}</div>
                 </div>
-                <div className="text-slate-400 text-sm">{stat.label}</div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -382,7 +601,7 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-black mb-4">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                À propos
+                {t.about.title}
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
@@ -399,30 +618,21 @@ export default function Portfolio() {
 
             <div className="space-y-6">
               <p className="text-lg text-slate-300 leading-relaxed">
-                Étudiant passionné en informatique à{" "}
-                <span className="text-cyan-400 font-semibold">ISET Bizerte</span>,
-                je me spécialise dans le développement full stack avec une expertise
-                particulière en résolution de problèmes complexes.
+                {t.about.intro}
               </p>
 
               <p className="text-lg text-slate-300 leading-relaxed">
-                Mon expérience chez{" "}
-                <span className="text-blue-400 font-semibold">OneTech Group</span>{" "}
-                m'a permis de développer des solutions web modernes en utilisant Vue.js
-                et Laravel pour optimiser la gestion d'entreprise.
+                {t.about.experience}
               </p>
 
               <p className="text-lg text-slate-300 leading-relaxed">
-                En tant que{" "}
-                <span className="text-purple-400 font-semibold">Membre IEEE</span> de
-                l'IEEE ISET Bizerte Student Branch, je suis déterminé à poursuivre mes
-                études d'ingénieur avec une spécialisation en Intelligence Artificielle.
+                {t.about.role}
               </p>
 
               <div className="pt-8">
                 <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
                   <Zap className="text-cyan-400" />
-                  Compétences Techniques
+                  {t.about.skillsTitle}
                 </h3>
                 <div className="space-y-4">
                   {skills.map((skill, idx) => (
@@ -456,23 +666,19 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-black mb-4">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Expérience
+                {t.experience.title}
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
           </div>
 
           <div className="max-w-5xl mx-auto relative">
-            {/* Timeline Line */}
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500 hidden md:block" />
 
             <div className="space-y-12">
-              {/* Experience 1 - Right Side */}
               <div className="relative grid md:grid-cols-2 gap-8 items-center">
-                {/* Left Empty Space */}
                 <div className="hidden md:block" />
                
-                {/* Timeline Dot */}
                 <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                   <div className="relative">
                     <div className="w-6 h-6 bg-cyan-500 rounded-full border-4 border-slate-900 shadow-lg shadow-cyan-500/50 animate-pulse" />
@@ -480,28 +686,25 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Content */}
                 <div className="group relative">
                   <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
                   <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-cyan-500 transition-all ml-0 md:ml-8">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         <span className="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 rounded-full text-sm font-medium mb-3">
-                          Janvier 2025
+                          {t.experience.job1.date}
                         </span>
                         <h3 className="text-2xl font-bold mb-2 text-white">
-                          Stagiaire Développeur
+                          {t.experience.job1.title}
                         </h3>
                         <p className="text-cyan-400 font-semibold text-lg flex items-center gap-2 mb-4">
                           <Briefcase size={20} />
-                          OneTech Group
+                          {t.experience.job1.company}
                         </p>
                       </div>
                     </div>
                     <p className="text-slate-300 leading-relaxed mb-4">
-                      Développement d'une application web complète pour la gestion des
-                      salariés, tâches, évaluations et formateurs utilisant Vue.js 3 et
-                      Laravel 9.
+                      {t.experience.job1.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
                       <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-lg text-sm font-medium">
@@ -511,7 +714,6 @@ export default function Portfolio() {
                         Laravel 9
                       </span>
                     </div>
-                    {/* Decorative Arrow */}
                     <div className="hidden md:block absolute right-full top-1/2 transform translate-x-8 -translate-y-1/2">
                       <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-500 to-transparent" />
                     </div>
@@ -519,38 +721,33 @@ export default function Portfolio() {
                 </div>
               </div>
 
-              {/* Experience 2 - Left Side */}
               <div className="relative grid md:grid-cols-2 gap-8 items-center">
-                {/* Content */}
                 <div className="group relative md:col-start-1">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
                   <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500 transition-all mr-0 md:mr-8">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
                         <span className="inline-block px-3 py-1 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-full text-sm font-medium mb-3">
-                          Janvier 2024
+                          {t.experience.job2.date}
                         </span>
                         <h3 className="text-2xl font-bold mb-2 text-white">
-                          Stagiaire d'Observation
+                          {t.experience.job2.title}
                         </h3>
                         <p className="text-blue-400 font-semibold text-lg flex items-center gap-2 mb-4">
                           <Briefcase size={20} />
-                          OneTech Group
+                          {t.experience.job2.company}
                         </p>
                       </div>
                     </div>
                     <p className="text-slate-300 leading-relaxed">
-                      Découverte du monde professionnel et apprentissage de la fabrication
-                      des composants électroniques.
+                      {t.experience.job2.description}
                     </p>
-                    {/* Decorative Arrow */}
                     <div className="hidden md:block absolute left-full top-1/2 transform -translate-x-8 -translate-y-1/2">
                       <div className="w-8 h-0.5 bg-gradient-to-l from-blue-500 to-transparent" />
                     </div>
                   </div>
                 </div>
 
-                {/* Timeline Dot */}
                 <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                   <div className="relative">
                     <div className="w-6 h-6 bg-blue-500 rounded-full border-4 border-slate-900 shadow-lg shadow-blue-500/50 animate-pulse" />
@@ -558,17 +755,15 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                {/* Right Empty Space */}
                 <div className="hidden md:block" />
               </div>
             </div>
 
-            {/* Timeline Start Marker */}
             <div className="hidden md:flex justify-center mt-12">
               <div className="flex flex-col items-center">
                 <div className="w-4 h-4 bg-purple-500 rounded-full border-4 border-slate-900 shadow-lg shadow-purple-500/50" />
                 <div className="mt-2 px-4 py-1 bg-purple-500/20 border border-purple-500/30 text-purple-400 rounded-full text-sm font-medium">
-                  Début du parcours
+                  {t.experience.timeline}
                 </div>
               </div>
             </div>
@@ -582,7 +777,7 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-black mb-4">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Projets
+                {t.projects.title}
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
@@ -635,7 +830,7 @@ export default function Portfolio() {
           <div className="text-center mb-16">
             <h2 className="text-5xl md:text-6xl font-black mb-4">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Certifications
+                {t.certifications.title}
               </span>
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full" />
@@ -677,12 +872,11 @@ export default function Portfolio() {
           <div className="text-center mb-12">
             <h2 className="text-5xl md:text-6xl font-black mb-6">
               <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                Travaillons Ensemble
+                {t.contact.title}
               </span>
             </h2>
             <p className="text-xl text-slate-300 max-w-2xl mx-auto">
-              Je suis toujours ouvert aux opportunités de collaboration et aux projets
-              innovants. N'hésitez pas à me contacter !
+              {t.contact.subtitle}
             </p>
           </div>
 
@@ -722,10 +916,10 @@ export default function Portfolio() {
                     <div className="p-3 bg-cyan-500/20 rounded-lg">
                       <GraduationCap className="text-cyan-400" size={24} />
                     </div>
-                    <h3 className="text-white font-bold text-lg">Formation</h3>
+                    <h3 className="text-white font-bold text-lg">{t.contact.formation}</h3>
                   </div>
                   <p className="text-slate-300 font-semibold">ISET Bizerte</p>
-                  <p className="text-slate-400 text-sm">Technologie Informatique</p>
+                  <p className="text-slate-400 text-sm">{language === "fr" ? "Technologie Informatique" : "Information Technology"}</p>
                 </div>
 
                 <div className="bg-slate-900/50 rounded-2xl p-6 border border-slate-700">
@@ -733,13 +927,13 @@ export default function Portfolio() {
                     <div className="p-3 bg-blue-500/20 rounded-lg">
                       <Briefcase className="text-blue-400" size={24} />
                     </div>
-                    <h3 className="text-white font-bold text-lg">Statut</h3>
+                    <h3 className="text-white font-bold text-lg">{t.contact.status}</h3>
                   </div>
                   <p className="text-slate-300 font-semibold">
-                    Ouvert aux opportunités
+                    {t.contact.statusText}
                   </p>
                   <p className="text-slate-400 text-sm">
-                    Stage • Projet • Freelance
+                    {t.contact.statusDesc}
                   </p>
                 </div>
               </div>
@@ -779,7 +973,7 @@ export default function Portfolio() {
               © 2026 Amine Added
               <br />
               <span className="text-slate-500">
-                Conçu avec ❤️ • React + Tailwind
+                {t.footer.designed}
               </span>
             </p>
           </div>
