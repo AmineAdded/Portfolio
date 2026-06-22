@@ -26,6 +26,7 @@ import {
 import attestationExcellence from "./assets/certifications/attestation-excellence.jpg";
 import azureAi from "./assets/certifications/azure-ai.jpg";
 import ieeeExtreme from "./assets/certifications/ieee-extreme.jpg";
+import codeItUp from "./assets/certifications/code it up 6.0.png";
 
 export default function Portfolio() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -175,7 +176,7 @@ export default function Portfolio() {
       experience: {
         title: "Experience",
         job1: {
-          date: "2025 — Final Year Internship (4 months)",
+          date: "02/02/2026 to 23/05/2026 — Final Year Internship (4 months)",
           title: "Final Year Intern",
           company: "AsteelFlash Tunisia",
           description: "Completed final year project developing a comprehensive asset management solution (AssetFlow) integrating ASP.NET, Blazor, SQL Server and advanced image processing features."
@@ -381,11 +382,11 @@ export default function Portfolio() {
       {
         title: "Code It Up 6.0 — 2ème Place",
         issuer: "IEEE ISET Bizerte",
-        date: "Sept. 2025",
-        skill: "Résolution de problèmes",
+        date: "Avril. 2026",
+        skill: "Développement web avce AI",
         icon: "🥈",
         color: "from-purple-400 to-pink-500",
-        image: null,
+        image: codeItUp,
       },
     ],
     en: [
@@ -418,11 +419,11 @@ export default function Portfolio() {
       {
         title: "Code It Up 6.0 — 2nd Place",
         issuer: "IEEE ISET Bizerte",
-        date: "Sept. 2025",
-        skill: "Problem Solving",
+        date: "April. 2026",
+        skill: "Web Development with AI",
         icon: "🥈",
         color: "from-purple-400 to-pink-500",
-        image: null,
+        image: codeItUp,
       },
     ]
   };
