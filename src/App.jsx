@@ -22,12 +22,18 @@ import {
   Globe,
 } from "lucide-react";
 
+// Import certification images
+import attestationExcellence from "./assets/certifications/attestation-excellence.jpg";
+import azureAi from "./assets/certifications/azure-ai.jpg";
+import ieeeExtreme from "./assets/certifications/ieee-extreme.jpg";
+
 export default function Portfolio() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [language, setLanguage] = useState("fr");
+  const [certModalImg, setCertModalImg] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -76,7 +82,7 @@ export default function Portfolio() {
     fr: {
       nav: ["Accueil", "À propos", "Expérience", "Projets", "Certifications", "Contact"],
       hero: {
-        badge: "Étudiant en Informatique",
+        badge: "Diplômé en Licence Appliquée — Technologie de l'Information",
         name: "Amine Added",
         title: "Développeur Full Stack",
         description: "Passionné par la création d'expériences numériques exceptionnelles",
@@ -88,26 +94,32 @@ export default function Portfolio() {
       },
       stats: [
         { label: "Projets Réalisés", value: "15+" },
-        { label: "Technologies", value: "14+" },
+        { label: "Technologies", value: "20+" },
         { label: "Certifications", value: "4" },
         { label: "Années d'Expérience", value: "2+" }
       ],
       about: {
         title: "À propos",
-        intro: "Étudiant passionné en informatique à ISET Bizerte, je me spécialise dans le développement full stack avec une expertise particulière en résolution de problèmes complexes.",
-        experience: "Mon expérience chez OneTech Group m'a permis de développer des solutions web modernes en utilisant Vue.js et Laravel pour optimiser la gestion d'entreprise.",
-        role: "En tant que Membre IEEE de l'IEEE ISET Bizerte Student Branch, je suis déterminé à poursuivre mes études d'ingénieur avec une spécialisation en Intelligence Artificielle.",
+        intro: "Diplômé en Licence Appliquée en Technologie de l'Information à ISET Bizerte, je me spécialise dans le développement full stack avec une expertise particulière en résolution de problèmes complexes, vision par ordinateur et intelligence artificielle.",
+        experience: "Mon expérience chez AsteelFlash Tunisie (stage PFE, 4 mois) m'a permis de développer des solutions modernes et d'approfondir mes compétences en développement logiciel industriel.",
+        role: "En tant que Membre IEEE de l'IEEE ISET Bizerte Student Branch, je suis déterminé à poursuivre un cycle d'ingénieur avec une spécialisation en Intelligence Artificielle.",
         skillsTitle: "Compétences Techniques"
       },
       experience: {
         title: "Expérience",
         job1: {
+          date: "02/02/2026 à 23/05/2026 — Stage PFE (4 mois)",
+          title: "Stagiaire PFE",
+          company: "AsteelFlash Tunisie",
+          description: "Réalisation du projet de fin d'études avec développement d'une solution complète de gestion des actifs (AssetFlow) intégrant ASP.NET, Blazor, SQL Server et des fonctionnalités avancées de traitement d'images."
+        },
+        job2: {
           date: "Janvier 2025",
           title: "Stagiaire Développeur",
           company: "OneTech Group",
           description: "Développement d'une application web complète pour la gestion des salariés, tâches, évaluations et formateurs utilisant Vue.js 3 et Laravel 9."
         },
-        job2: {
+        job3: {
           date: "Janvier 2024",
           title: "Stagiaire d'Observation",
           company: "OneTech Group",
@@ -119,15 +131,16 @@ export default function Portfolio() {
         title: "Projets"
       },
       certifications: {
-        title: "Certifications"
+        title: "Certifications",
+        clickToView: "Cliquer pour voir"
       },
       contact: {
         title: "Travaillons Ensemble",
-        subtitle: "Je suis toujours ouvert aux opportunités de collaboration et aux projets innovants. N'hésitez pas à me contacter !",
+        subtitle: "Je suis à la recherche d'un cycle d'ingénieur et ouvert aux opportunités de collaboration. N'hésitez pas à me contacter !",
         formation: "Formation",
         status: "Statut",
-        statusText: "Ouvert aux opportunités",
-        statusDesc: "Stage • Projet • Freelance"
+        statusText: "Cherchant un cycle d'ingénieur",
+        statusDesc: "Ingénierie • Intelligence Artificielle • Informatique"
       },
       footer: {
         designed: "Conçu avec ❤️ • React + Tailwind"
@@ -136,7 +149,7 @@ export default function Portfolio() {
     en: {
       nav: ["Home", "About", "Experience", "Projects", "Certifications", "Contact"],
       hero: {
-        badge: "Computer Science Student",
+        badge: "Bachelor's Graduate — Information Technology",
         name: "Amine Added",
         title: "Full Stack Developer",
         description: "Passionate about creating exceptional digital experiences",
@@ -148,26 +161,32 @@ export default function Portfolio() {
       },
       stats: [
         { label: "Completed Projects", value: "15+" },
-        { label: "Technologies", value: "14+" },
+        { label: "Technologies", value: "20+" },
         { label: "Certifications", value: "4" },
         { label: "Years of Experience", value: "2+" }
       ],
       about: {
         title: "About Me",
-        intro: "Passionate computer science student at ISET Bizerte, I specialize in full stack development with particular expertise in solving complex problems.",
-        experience: "My experience at OneTech Group allowed me to develop modern web solutions using Vue.js and Laravel to optimize business management.",
-        role: "As IEEE member of the IEEE ISET Bizerte Student Branch, I am determined to pursue engineering studies with a specialization in Artificial Intelligence.",
+        intro: "Bachelor's graduate in Information Technology from ISET Bizerte, I specialize in full stack development with particular expertise in solving complex problems, computer vision and artificial intelligence.",
+        experience: "My experience at AsteelFlash Tunisia (4-month final year internship) allowed me to develop modern solutions and deepen my skills in industrial software development.",
+        role: "As IEEE member of the IEEE ISET Bizerte Student Branch, I am determined to pursue an engineering degree with a specialization in Artificial Intelligence.",
         skillsTitle: "Technical Skills"
       },
       experience: {
         title: "Experience",
         job1: {
+          date: "2025 — Final Year Internship (4 months)",
+          title: "Final Year Intern",
+          company: "AsteelFlash Tunisia",
+          description: "Completed final year project developing a comprehensive asset management solution (AssetFlow) integrating ASP.NET, Blazor, SQL Server and advanced image processing features."
+        },
+        job2: {
           date: "January 2025",
           title: "Developer Intern",
           company: "OneTech Group",
           description: "Development of a complete web application for managing employees, tasks, evaluations and trainers using Vue.js 3 and Laravel 9."
         },
-        job2: {
+        job3: {
           date: "January 2024",
           title: "Observation Intern",
           company: "OneTech Group",
@@ -179,15 +198,16 @@ export default function Portfolio() {
         title: "Projects"
       },
       certifications: {
-        title: "Certifications"
+        title: "Certifications",
+        clickToView: "Click to view"
       },
       contact: {
         title: "Let's Work Together",
-        subtitle: "I'm always open to collaboration opportunities and innovative projects. Feel free to contact me!",
+        subtitle: "I'm looking for an engineering degree program and open to collaboration opportunities. Feel free to contact me!",
         formation: "Education",
         status: "Status",
-        statusText: "Open to opportunities",
-        statusDesc: "Internship • Project • Freelance"
+        statusText: "Seeking an Engineering Degree",
+        statusDesc: "Engineering • Artificial Intelligence • Computer Science"
       },
       footer: {
         designed: "Designed with ❤️ • React + Tailwind"
@@ -200,12 +220,22 @@ export default function Portfolio() {
   const projectsData = {
     fr: [
       {
+        title: "AssetFlow",
+        period: "2025 — Stage PFE",
+        description: "Solution complète de gestion des actifs industriels développée chez AsteelFlash Tunisie. Intègre la reconnaissance optique de caractères (OCR), la vision par ordinateur, et une interface Blazor avec ASP.NET Core et SQL Server.",
+        tech: ["ASP.NET", "Blazor", "SQL Server", "C#", "OCR", "PostgreSQL"],
+        gradient: "from-violet-500 via-purple-500 to-indigo-500",
+        icon: "🏭",
+        github: "https://github.com/AmineAdded/AssetFlow-Deployed",
+      },
+      {
         title: "HealthyfiTN",
         period: "Oct. 2025 - Déc. 2025",
         description: "Solution complète de santé numérique avec application mobile (Kotlin) et plateforme web (Angular), alimentée par un backend Spring Boot avec microservices. Intègre l'IA pour l'analyse de santé, suivi biométrique en temps réel avec avatar 3D, et chatbot intelligent Gemini.",
         tech: ["Angular", "Spring Boot", "Kotlin", "Keycloak", "AI", "Python"],
         gradient: "from-emerald-500 via-teal-500 to-cyan-500",
         icon: "🏥",
+        github: "https://github.com/AbdouBenHatttab/healthyfitn",
       },
       {
         title: "Smart-Learn",
@@ -214,6 +244,7 @@ export default function Portfolio() {
         tech: ["Flutter", "Spring Boot", "MySQL", "Gemini API"],
         gradient: "from-blue-500 via-indigo-500 to-purple-500",
         icon: "🎓",
+        github: "https://github.com/AmineAdded/Smart-Learn.git",
       },
       {
         title: "SITE Conference",
@@ -222,6 +253,7 @@ export default function Portfolio() {
         tech: ["TypeScript", "Laravel", "MySQL"],
         gradient: "from-purple-500 via-pink-500 to-rose-500",
         icon: "🎪",
+        github: "https://github.com/AmineAdded/SITE_Conference.git",
       },
       {
         title: "ChbebiWin",
@@ -230,6 +262,7 @@ export default function Portfolio() {
         tech: ["Laravel", "Vue.js", "MySQL"],
         gradient: "from-red-500 via-orange-500 to-amber-500",
         icon: "🇹🇳",
+        github: "https://github.com/AmineAdded/Chbebi-win-Projet-integration.git",
       },
       {
         title: "LawReserve",
@@ -238,6 +271,7 @@ export default function Portfolio() {
         tech: ["Vue.js", "PHP", "Firebase", "MySQL"],
         gradient: "from-amber-500 via-yellow-500 to-lime-500",
         icon: "⚖️",
+        github: "https://github.com/AmineAdded/LawReserve-Project.git",
       },
       {
         title: "BusGameSimulator",
@@ -246,9 +280,19 @@ export default function Portfolio() {
         tech: ["C", "SDL 1.2"],
         gradient: "from-cyan-500 via-blue-500 to-indigo-500",
         icon: "🚌",
+        github: "https://github.com/AmineAdded/BusGame.git",
       },
     ],
     en: [
+      {
+        title: "AssetFlow",
+        period: "2025 — Final Year Internship",
+        description: "Comprehensive industrial asset management solution developed at AsteelFlash Tunisia. Integrates optical character recognition (OCR), computer vision, and a Blazor interface with ASP.NET Core and SQL Server.",
+        tech: ["ASP.NET", "Blazor", "SQL Server", "C#", "OCR", "PostgreSQL"],
+        gradient: "from-violet-500 via-purple-500 to-indigo-500",
+        icon: "🏭",
+        github: "https://github.com/AmineAdded/AssetFlow-Deployed",
+      },
       {
         title: "HealthyfiTN",
         period: "Oct. 2025 - Dec. 2025",
@@ -256,6 +300,7 @@ export default function Portfolio() {
         tech: ["Angular", "Spring Boot", "Kotlin", "Keycloak", "AI", "Python"],
         gradient: "from-emerald-500 via-teal-500 to-cyan-500",
         icon: "🏥",
+        github: "https://github.com/AbdouBenHatttab/healthyfitn",
       },
       {
         title: "Smart-Learn",
@@ -264,6 +309,7 @@ export default function Portfolio() {
         tech: ["Flutter", "Spring Boot", "MySQL", "Gemini API"],
         gradient: "from-blue-500 via-indigo-500 to-purple-500",
         icon: "🎓",
+        github: "https://github.com/AmineAdded/Smart-Learn.git",
       },
       {
         title: "SITE Conference",
@@ -272,6 +318,7 @@ export default function Portfolio() {
         tech: ["TypeScript", "Laravel", "MySQL"],
         gradient: "from-purple-500 via-pink-500 to-rose-500",
         icon: "🎪",
+        github: "https://github.com/AmineAdded/SITE_Conference.git",
       },
       {
         title: "ChbebiWin",
@@ -280,6 +327,7 @@ export default function Portfolio() {
         tech: ["Laravel", "Vue.js", "MySQL"],
         gradient: "from-red-500 via-orange-500 to-amber-500",
         icon: "🇹🇳",
+        github: "https://github.com/AmineAdded/Chbebi-win-Projet-integration.git",
       },
       {
         title: "LawReserve",
@@ -288,6 +336,7 @@ export default function Portfolio() {
         tech: ["Vue.js", "PHP", "Firebase", "MySQL"],
         gradient: "from-amber-500 via-yellow-500 to-lime-500",
         icon: "⚖️",
+        github: "https://github.com/AmineAdded/LawReserve-Project.git",
       },
       {
         title: "BusGameSimulator",
@@ -296,6 +345,7 @@ export default function Portfolio() {
         tech: ["C", "SDL 1.2"],
         gradient: "from-cyan-500 via-blue-500 to-indigo-500",
         icon: "🚌",
+        github: "https://github.com/AmineAdded/BusGame.git",
       },
     ]
   };
@@ -308,6 +358,7 @@ export default function Portfolio() {
         date: "Juillet 2025",
         icon: "🏆",
         color: "from-yellow-400 to-orange-500",
+        image: attestationExcellence,
       },
       {
         title: "IEEEXtreme 18.0 Programming Competition",
@@ -316,6 +367,7 @@ export default function Portfolio() {
         skill: "19,000 participants",
         icon: "⚡",
         color: "from-blue-400 to-indigo-500",
+        image: ieeeExtreme,
       },
       {
         title: "Microsoft Certified: Azure AI Fundamentals",
@@ -324,14 +376,16 @@ export default function Portfolio() {
         skill: "NLP, Computer Vision, Azure AI",
         icon: "☁️",
         color: "from-cyan-400 to-blue-500",
+        image: azureAi,
       },
       {
-        title: "Bizerte Tcodi 2.0",
+        title: "Code It Up 6.0 — 2ème Place",
         issuer: "IEEE ISET Bizerte",
         date: "Sept. 2025",
         skill: "Résolution de problèmes",
-        icon: "🎯",
+        icon: "🥈",
         color: "from-purple-400 to-pink-500",
+        image: null,
       },
     ],
     en: [
@@ -341,6 +395,7 @@ export default function Portfolio() {
         date: "July 2025",
         icon: "🏆",
         color: "from-yellow-400 to-orange-500",
+        image: attestationExcellence,
       },
       {
         title: "IEEEXtreme 18.0 Programming Competition",
@@ -349,6 +404,7 @@ export default function Portfolio() {
         skill: "19,000 participants",
         icon: "⚡",
         color: "from-blue-400 to-indigo-500",
+        image: ieeeExtreme,
       },
       {
         title: "Microsoft Certified: Azure AI Fundamentals",
@@ -357,14 +413,16 @@ export default function Portfolio() {
         skill: "NLP, Computer Vision, Azure AI",
         icon: "☁️",
         color: "from-cyan-400 to-blue-500",
+        image: azureAi,
       },
       {
-        title: "Bizerte Tcodi 2.0",
+        title: "Code It Up 6.0 — 2nd Place",
         issuer: "IEEE ISET Bizerte",
         date: "Sept. 2025",
         skill: "Problem Solving",
-        icon: "🎯",
+        icon: "🥈",
         color: "from-purple-400 to-pink-500",
+        image: null,
       },
     ]
   };
@@ -375,14 +433,18 @@ export default function Portfolio() {
   const skills = [
     { name: "Java", level: 90, color: "bg-red-500" },
     { name: "C/C++", level: 85, color: "bg-blue-500" },
+    { name: "C# / ASP.NET", level: 82, color: "bg-violet-500" },
     { name: "Python", level: 80, color: "bg-yellow-500" },
     { name: "Laravel", level: 90, color: "bg-red-600" },
     { name: "Vue.js", level: 88, color: "bg-emerald-500" },
     { name: "Angular", level: 85, color: "bg-red-500" },
+    { name: "Blazor", level: 78, color: "bg-purple-500" },
     { name: "Spring Boot", level: 87, color: "bg-green-600" },
-    { name: "MySQL", level: 85, color: "bg-blue-600" },
+    { name: "MySQL / SQL Server / PostgreSQL", level: 85, color: "bg-blue-600" },
     { name: "Flutter", level: 82, color: "bg-cyan-500" },
     { name: "TypeScript", level: 83, color: "bg-blue-500" },
+    { name: "OCR / Vision par ordinateur", level: 75, color: "bg-teal-500" },
+    { name: "Redis / Power Automate", level: 70, color: "bg-orange-500" },
   ];
 
   return (
@@ -404,6 +466,28 @@ export default function Portfolio() {
         <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse delay-1000" />
         <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-purple-500/20 rounded-full blur-3xl animate-pulse delay-500" />
       </div>
+
+      {/* Certification Image Modal */}
+      {certModalImg && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
+          onClick={() => setCertModalImg(null)}
+        >
+          <div className="relative max-w-3xl w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="absolute -top-10 right-0 text-white hover:text-cyan-400 transition-colors font-bold text-lg"
+              onClick={() => setCertModalImg(null)}
+            >
+              ✕ Fermer
+            </button>
+            <img
+              src={certModalImg}
+              alt="Certification"
+              className="w-full rounded-2xl shadow-2xl border border-slate-700"
+            />
+          </div>
+        </div>
+      )}
 
       {/* Navigation */}
       <nav
@@ -676,28 +760,29 @@ export default function Portfolio() {
             <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-cyan-500 via-blue-500 to-purple-500 hidden md:block" />
 
             <div className="space-y-12">
+              {/* Job 1 — AsteelFlash */}
               <div className="relative grid md:grid-cols-2 gap-8 items-center">
                 <div className="hidden md:block" />
-               
+
                 <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                   <div className="relative">
-                    <div className="w-6 h-6 bg-cyan-500 rounded-full border-4 border-slate-900 shadow-lg shadow-cyan-500/50 animate-pulse" />
-                    <div className="absolute inset-0 w-6 h-6 bg-cyan-500 rounded-full animate-ping opacity-75" />
+                    <div className="w-6 h-6 bg-violet-500 rounded-full border-4 border-slate-900 shadow-lg shadow-violet-500/50 animate-pulse" />
+                    <div className="absolute inset-0 w-6 h-6 bg-violet-500 rounded-full animate-ping opacity-75" />
                   </div>
                 </div>
 
                 <div className="group relative">
-                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
-                  <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-cyan-500 transition-all ml-0 md:ml-8">
+                  <div className="absolute inset-0 bg-gradient-to-r from-violet-500 to-purple-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-violet-500 transition-all ml-0 md:ml-8">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <span className="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 rounded-full text-sm font-medium mb-3">
+                        <span className="inline-block px-3 py-1 bg-violet-500/20 border border-violet-500/30 text-violet-400 rounded-full text-sm font-medium mb-3">
                           {t.experience.job1.date}
                         </span>
                         <h3 className="text-2xl font-bold mb-2 text-white">
                           {t.experience.job1.title}
                         </h3>
-                        <p className="text-cyan-400 font-semibold text-lg flex items-center gap-2 mb-4">
+                        <p className="text-violet-400 font-semibold text-lg flex items-center gap-2 mb-4">
                           <Briefcase size={20} />
                           {t.experience.job1.company}
                         </p>
@@ -707,46 +792,58 @@ export default function Portfolio() {
                       {t.experience.job1.description}
                     </p>
                     <div className="flex flex-wrap gap-2">
-                      <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-lg text-sm font-medium">
-                        Vue.js 3
-                      </span>
-                      <span className="px-3 py-1 bg-red-500/20 border border-red-500/30 text-red-400 rounded-lg text-sm font-medium">
-                        Laravel 9
-                      </span>
-                    </div>
-                    <div className="hidden md:block absolute right-full top-1/2 transform translate-x-8 -translate-y-1/2">
-                      <div className="w-8 h-0.5 bg-gradient-to-r from-cyan-500 to-transparent" />
+                      {["ASP.NET", "Blazor", "C#", "SQL Server", "OCR"].map(tech => (
+                        <span key={tech} className="px-3 py-1 bg-violet-500/20 border border-violet-500/30 text-violet-400 rounded-lg text-sm font-medium">
+                          {tech}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
               </div>
 
+              {/* Job 2 — OneTech Developer */}
               <div className="relative grid md:grid-cols-2 gap-8 items-center">
                 <div className="group relative md:col-start-1">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
-                  <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500 transition-all mr-0 md:mr-8">
+                  <div className="absolute inset-0 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-cyan-500 transition-all mr-0 md:mr-8">
                     <div className="flex items-start justify-between mb-4">
                       <div className="flex-1">
-                        <span className="inline-block px-3 py-1 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-full text-sm font-medium mb-3">
+                        <span className="inline-block px-3 py-1 bg-cyan-500/20 border border-cyan-500/30 text-cyan-400 rounded-full text-sm font-medium mb-3">
                           {t.experience.job2.date}
                         </span>
                         <h3 className="text-2xl font-bold mb-2 text-white">
                           {t.experience.job2.title}
                         </h3>
-                        <p className="text-blue-400 font-semibold text-lg flex items-center gap-2 mb-4">
+                        <p className="text-cyan-400 font-semibold text-lg flex items-center gap-2 mb-4">
                           <Briefcase size={20} />
                           {t.experience.job2.company}
                         </p>
                       </div>
                     </div>
-                    <p className="text-slate-300 leading-relaxed">
+                    <p className="text-slate-300 leading-relaxed mb-4">
                       {t.experience.job2.description}
                     </p>
-                    <div className="hidden md:block absolute left-full top-1/2 transform -translate-x-8 -translate-y-1/2">
-                      <div className="w-8 h-0.5 bg-gradient-to-l from-blue-500 to-transparent" />
+                    <div className="flex flex-wrap gap-2">
+                      <span className="px-3 py-1 bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 rounded-lg text-sm font-medium">Vue.js 3</span>
+                      <span className="px-3 py-1 bg-red-500/20 border border-red-500/30 text-red-400 rounded-lg text-sm font-medium">Laravel 9</span>
                     </div>
                   </div>
                 </div>
+
+                <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
+                  <div className="relative">
+                    <div className="w-6 h-6 bg-cyan-500 rounded-full border-4 border-slate-900 shadow-lg shadow-cyan-500/50 animate-pulse" />
+                    <div className="absolute inset-0 w-6 h-6 bg-cyan-500 rounded-full animate-ping opacity-75" />
+                  </div>
+                </div>
+
+                <div className="hidden md:block" />
+              </div>
+
+              {/* Job 3 — OneTech Observation */}
+              <div className="relative grid md:grid-cols-2 gap-8 items-center">
+                <div className="hidden md:block" />
 
                 <div className="hidden md:block absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10">
                   <div className="relative">
@@ -755,7 +852,28 @@ export default function Portfolio() {
                   </div>
                 </div>
 
-                <div className="hidden md:block" />
+                <div className="group relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity" />
+                  <div className="relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-8 hover:border-blue-500 transition-all ml-0 md:ml-8">
+                    <div className="flex items-start justify-between mb-4">
+                      <div className="flex-1">
+                        <span className="inline-block px-3 py-1 bg-blue-500/20 border border-blue-500/30 text-blue-400 rounded-full text-sm font-medium mb-3">
+                          {t.experience.job3.date}
+                        </span>
+                        <h3 className="text-2xl font-bold mb-2 text-white">
+                          {t.experience.job3.title}
+                        </h3>
+                        <p className="text-blue-400 font-semibold text-lg flex items-center gap-2 mb-4">
+                          <Briefcase size={20} />
+                          {t.experience.job3.company}
+                        </p>
+                      </div>
+                    </div>
+                    <p className="text-slate-300 leading-relaxed">
+                      {t.experience.job3.description}
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -785,9 +903,12 @@ export default function Portfolio() {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {projects.map((project, idx) => (
-              <div
+              <a
                 key={idx}
-                className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden hover:border-cyan-500 transition-all duration-300 hover:transform hover:scale-105"
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden hover:border-cyan-500 transition-all duration-300 hover:transform hover:scale-105 block"
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity`}
@@ -795,10 +916,10 @@ export default function Portfolio() {
                 <div className="relative p-6">
                   <div className="flex items-start justify-between mb-4">
                     <span className="text-4xl">{project.icon}</span>
-                    <ExternalLink
-                      className="text-slate-400 group-hover:text-cyan-400 transition-colors"
-                      size={20}
-                    />
+                    <div className="flex items-center gap-1 text-slate-400 group-hover:text-cyan-400 transition-colors">
+                      <Github size={18} />
+                      <ExternalLink size={16} />
+                    </div>
                   </div>
                   <h3 className="text-xl font-bold mb-2 text-white group-hover:text-cyan-400 transition-colors">
                     {project.title}
@@ -818,7 +939,7 @@ export default function Portfolio() {
                     ))}
                   </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -840,17 +961,36 @@ export default function Portfolio() {
             {certifications.map((cert, idx) => (
               <div
                 key={idx}
-                className="group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl p-6 hover:border-cyan-500 transition-all duration-300 hover:transform hover:scale-105"
+                className={`group relative bg-slate-800/50 backdrop-blur-sm border border-slate-700 rounded-2xl overflow-hidden hover:border-cyan-500 transition-all duration-300 hover:transform hover:scale-105 flex flex-col ${cert.image ? "cursor-pointer" : ""}`}
+                onClick={() => cert.image && setCertModalImg(cert.image)}
               >
                 <div
                   className={`absolute inset-0 bg-gradient-to-br ${cert.color} opacity-0 group-hover:opacity-10 transition-opacity rounded-2xl`}
                 />
-                <div className="relative">
-                  <div className="text-5xl mb-4">{cert.icon}</div>
-                  <h3 className="text-lg font-bold mb-2 text-white">
+
+                {/* Certificate image preview */}
+                {cert.image && (
+                  <div className="relative w-full h-40 overflow-hidden">
+                    <img
+                      src={cert.image}
+                      alt={cert.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent flex items-end justify-end p-2">
+                      <span className="text-xs text-cyan-400 font-medium flex items-center gap-1 bg-slate-900/60 px-2 py-1 rounded-full">
+                        <ExternalLink size={12} />
+                        {t.certifications.clickToView}
+                      </span>
+                    </div>
+                  </div>
+                )}
+
+                <div className="relative p-6 flex-1">
+                  <div className="text-4xl mb-3">{cert.icon}</div>
+                  <h3 className="text-base font-bold mb-2 text-white leading-tight">
                     {cert.title}
                   </h3>
-                  <p className="text-cyan-400 font-semibold text-sm mb-2">
+                  <p className="text-cyan-400 font-semibold text-sm mb-1">
                     {cert.issuer}
                   </p>
                   <p className="text-slate-400 text-sm mb-2">{cert.date}</p>
@@ -919,7 +1059,11 @@ export default function Portfolio() {
                     <h3 className="text-white font-bold text-lg">{t.contact.formation}</h3>
                   </div>
                   <p className="text-slate-300 font-semibold">ISET Bizerte</p>
-                  <p className="text-slate-400 text-sm">{language === "fr" ? "Technologie Informatique" : "Information Technology"}</p>
+                  <p className="text-slate-400 text-sm">
+                    {language === "fr"
+                      ? "Licence Appliquée — Technologie de l'Information"
+                      : "Applied Bachelor's — Information Technology"}
+                  </p>
                 </div>
 
                 <div className="bg-slate-900/50 rounded-2xl p-6 border border-slate-700">
